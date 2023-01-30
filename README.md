@@ -1,7 +1,7 @@
 HashiCorp Product Documentations Builder
 ========================================
 
-This repo hosts the build logic for the following HashiCorp product documentation forks:
+This repo hosts the build logic for the following HashiCorp product documentation **forks**:
 
 - [Packer][product Packer fork]
 - [Terraform][product Terraform fork]
@@ -14,7 +14,7 @@ framework. Each product documentation builds by cloning this [repo][] to their l
 PRODUCT_DOC_BASE_PATH=/hashicorp-vault npm run build:deploy-preview
 ```
 
-at the end of their corresponding [website-build.sh][vault website-build.sh]
+at the end of their corresponding [website-build.sh (Vault example)][vault website-build.sh]
 
 > The command above takes [Vault][product Vault fork] as an example. **It is important to make sure the base path starts 
 > with `/`, otherwise build errors**
@@ -23,10 +23,12 @@ at the end of their corresponding [website-build.sh][vault website-build.sh]
 > (taking [Vault][product Vault fork] as an example):
 > 
 >
-> Vault (npm run build) -> Vault (website-build.sh) -> Builder (this repo: npm run build:deploy-preview)
+> Vault (`npm run build`) -> Vault (execute `website-build.sh`) -> Builder (this repo: `npm run build:deploy-preview`)
 
-Example (Vault)
----------------
+Builder Usage Example (using [Vault][product Vault fork])
+---------------------------------------------------------
+
+Clone the [Vault][product Vault fork] and build:
 
 ```bash
 git clone git@github.com:QubitPi/hashicorp-vault.git
