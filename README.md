@@ -16,8 +16,8 @@ PRODUCT_DOC_BASE_PATH=/hashicorp-vault npm run build:deploy-preview
 
 at the end of their corresponding [website-build.sh (Vault example)][vault website-build.sh]
 
-> The command above takes [Vault][product Vault fork] as an example. **It is important to make sure the base path starts 
-> with `/`, otherwise build errors**
+> The command above takes [Vault][product Vault fork] as an example. **It is important to make sure the base path
+> starts with `/`**, otherwise build ends up with errors
 > 
 > Note that the `build:deploy-preview` is a builder script that gets invoked in product repo. The invocation chain is 
 > (taking [Vault][product Vault fork] as an example):
@@ -40,13 +40,13 @@ The last command [generates the static site under `./website-preview/.next` dire
 dedicated directory for Vault documentation, let's say `hashicorp-vault-docs`. Obtain a complete GitHub Pages deployable
 in the following steps:
 
-1. everything under `hashicorp-vault/website/website-preview/.next/server/pages`:
+1. move everything under `hashicorp-vault/website/website-preview/.next/server/pages` into `hashicorp-vault-docs`:
 
    ```bash
    mv hashicorp-vault/website/website-preview/.next/server/pages/* hashicorp-vault-docs
    ```
 
-2. everything under `.next/static/` as `_next/static` under `hashicorp-vault-docs`:
+2. move everything under `.next/static/` as `_next/static` under `hashicorp-vault-docs` into `hashicorp-vault-docs`:
 
    ```bash
    mkdir hashicorp-vault-docs/_next
