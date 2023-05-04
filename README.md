@@ -1,3 +1,5 @@
+[![Docker](https://img.shields.io/badge/Running%20Doc%20in%20Docker-309DEE?style=for-the-badge&logo=docker&logoColor=white)](https://hub.docker.com/r/jack20191124/hashicorp-dev-portal)
+
 # HashiCorp Product Documentations Builder
 
 This repo hosts the build logic for the following HashiCorp product documentation **forks**:
@@ -7,7 +9,7 @@ This repo hosts the build logic for the following HashiCorp product documentatio
 - [Vault][product vault fork]
 
 The repo does NOT host documentation contents; instead it **centralizes documentation build** using [Next.js][next.js]
-framework. Each product documentation builds by cloning this [repo][] to their local as the builder and then invoking
+framework. Each product documentation builds by cloning this repo to their local as the builder and then invoking
 
 ```bash
 PRODUCT_DOC_BASE_PATH=/hashicorp-vault npm run build:deploy-preview
