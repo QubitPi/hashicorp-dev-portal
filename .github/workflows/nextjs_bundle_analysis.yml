@@ -61,6 +61,7 @@ jobs:
       - name: Download base branch bundle stats
         uses: dawidd6/action-download-artifact@v2
         if: success() && github.event.number
+        continue-on-error: true # https://github.com/dawidd6/action-download-artifact/issues/119
         with:
           workflow: nextjs_bundle_analysis.yml
           branch: ${{ github.event.pull_request.base.ref }}
@@ -81,11 +82,13 @@ jobs:
       # entry in your package.json file.
       - name: Compare with base branch bundle
         if: success() && github.event.number
+        continue-on-error: true
         run: ls -laR .next/analyze/base && npx -p nextjs-bundle-analysis compare
 
       - name: Get comment body
         id: get-comment-body
         if: success() && github.event.number
+        continue-on-error: true
         uses: actions/github-script@v6
         with:
           result-encoding: string
@@ -97,6 +100,7 @@ jobs:
       - name: Find Comment
         uses: peter-evans/find-comment@v2
         if: success() && github.event.number
+        continue-on-error: true
         id: fc
         with:
           issue-number: ${{ github.event.number }}
@@ -105,6 +109,7 @@ jobs:
       - name: Create Comment
         uses: peter-evans/create-or-update-comment@v2
         if: success() && github.event.number && steps.fc.outputs.comment-id == 0
+        continue-on-error: true
         with:
           issue-number: ${{ github.event.number }}
           body: ${{ steps.get-comment-body.outputs.body }}
@@ -112,6 +117,7 @@ jobs:
       - name: Update Comment
         uses: peter-evans/create-or-update-comment@v2
         if: success() && github.event.number && steps.fc.outputs.comment-id != 0
+        continue-on-error: true
         with:
           issue-number: ${{ github.event.number }}
           body: ${{ steps.get-comment-body.outputs.body }}

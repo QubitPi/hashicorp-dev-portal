@@ -86,7 +86,7 @@ module.exports = withSwingset({
 			'unist-util-visit',
 		],
 	})({
-	    basePath: process.env.PRODUCT_DOC_BASE_PATH,
+		basePath: process.env.PRODUCT_DOC_BASE_PATH,
 		webpack(config) {
 			config.plugins.push(HashiConfigPlugin())
 			return config
