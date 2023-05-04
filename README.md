@@ -43,14 +43,17 @@ in the following steps:
 1. move everything under `hashicorp-vault/website/website-preview/.next/server/pages` into `hashicorp-vault-docs`:
 
    ```bash
-   mv hashicorp-vault/website/website-preview/.next/server/pages/* hashicorp-vault-docs
+   cp -r hashicorp-vault/website/website-preview/.next/server/pages/* hashicorp-vault-docs
    ```
 
-2. move everything under `.next/static/` as `_next/static` under `hashicorp-vault-docs` into `hashicorp-vault-docs`:
+   Note that we use 'copy' command here because later steps still need to look at the original directory for some
+   processing info
+
+2. copy everything under `.next/static/` as `_next/static` under `hashicorp-vault-docs` into `hashicorp-vault-docs`:
 
    ```bash
    mkdir hashicorp-vault-docs/_next
-   mv hashicorp-vault/website/website-preview/.next/static hashicorp-vault-docs/_next/static
+   cp -r hashicorp-vault/website/website-preview/.next/static hashicorp-vault-docs/_next/static
    ```
 
 3. (HashiCorp specific) every thing inside `hashicorp-vault/website/website-preview/.next/server/pages` directory as an
