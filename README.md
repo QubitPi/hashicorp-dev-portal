@@ -90,8 +90,10 @@ Additional documentation for internal collaborators is located in the [docs dire
 [product packer fork]: https://github.com/QubitPi/hashicorp-packer
 [product terraform fork]: https://github.com/QubitPi/hashicorp-terraform
 [product vault fork]: https://github.com/QubitPi/hashicorp-vault
+
 [next.js]: https://nextjs.org/
 [next.js build api]: https://nextjs.org/docs/deployment#nextjs-build-api
+
 [vault doc]: https://qubitpi.github.io/hashicorp-vault/vault
 [vault github pages deployable]: https://github.com/QubitPi/hashicorp-vault/tree/gh-pages
 [vault website-build.sh]: https://github.com/QubitPi/hashicorp-vault/blob/master/website/scripts/website-build.sh
