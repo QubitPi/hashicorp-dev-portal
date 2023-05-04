@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - main # change this if your default branch is named differently
+      - master # change this if your default branch is named differently
   workflow_dispatch:
 
 defaults:
@@ -62,6 +62,7 @@ jobs:
       - name: Download base branch bundle stats
         uses: dawidd6/action-download-artifact@246dbf436b23d7c49e21a7ab8204ca9ecd1fe615 # v2.27.0
         if: success() && github.event.number
+        continue-on-error: true # https://github.com/dawidd6/action-download-artifact/issues/119
         with:
           workflow: nextjs_bundle_analysis.yml
           branch: ${{ github.event.pull_request.base.ref }}
@@ -82,11 +83,13 @@ jobs:
       # entry in your package.json file.
       - name: Compare with base branch bundle
         if: success() && github.event.number
+        continue-on-error: true
         run: ls -laR .next/analyze/base && npx -p nextjs-bundle-analysis compare
 
       - name: Get comment body
         id: get-comment-body
         if: success() && github.event.number
+        continue-on-error: true
         uses: actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410 # v6.4.1
         with:
           result-encoding: string
@@ -98,6 +101,7 @@ jobs:
       - name: Find Comment
         uses: peter-evans/find-comment@a54c31d7fa095754bfef525c0c8e5e5674c4b4b1 # v2.4.0
         if: success() && github.event.number
+        continue-on-error: true
         id: fc
         with:
           issue-number: ${{ github.event.number }}
@@ -106,6 +110,7 @@ jobs:
       - name: Create Comment
         uses: peter-evans/create-or-update-comment@c6c9a1a66007646a28c153e2a8580a5bad27bcfa # v3.0.2
         if: success() && github.event.number && steps.fc.outputs.comment-id == 0
+        continue-on-error: true
         with:
           issue-number: ${{ github.event.number }}
           body: ${{ steps.get-comment-body.outputs.body }}
@@ -113,6 +118,7 @@ jobs:
       - name: Update Comment
         uses: peter-evans/create-or-update-comment@c6c9a1a66007646a28c153e2a8580a5bad27bcfa # v3.0.2
         if: success() && github.event.number && steps.fc.outputs.comment-id != 0
+        continue-on-error: true
         with:
           issue-number: ${{ github.event.number }}
           body: ${{ steps.get-comment-body.outputs.body }}

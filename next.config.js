@@ -39,6 +39,7 @@ const hideWaypointTipContent = {
 module.exports = withHashicorp({
 	css: false,
 })({
+	basePath: process.env.PRODUCT_DOC_BASE_PATH,
 	transpilePackages: [
 		'@hashicorp/flight-icons',
 		/**
