@@ -15,8 +15,8 @@ PRODUCT_DOC_BASE_PATH=/hashicorp-vault npm run build:deploy-preview
 
 at the end of their corresponding [website-build.sh (Vault example)][vault website-build.sh]
 
-> The command above takes [Vault][product vault fork] as an example. **It is important to make sure the base path
-> starts with `/`**, otherwise build ends up with errors
+> The command above takes [Vault][product vault fork] as an example. **It is important to make sure the value of
+> `PRODUCT_DOC_BASE_PATH` starts with `/`**, otherwise build ends up with errors
 >
 > Note that the `build:deploy-preview` is a builder script that gets invoked in product repo. The invocation chain is
 > (taking [Vault][product vault fork] as an example):
@@ -54,9 +54,10 @@ deployable][vault github pages deployable] in the following steps:
    ```
 
 3. (HashiCorp specific) Put every thing inside `hashicorp-vault/website/website-preview/.next/server/pages` directory
-   into a directory named by a random string ID and put this directory under `hashicorp-vault-docs/_next/data`. Next.js
-   makes each build an immutable deployable by prefixing static resource path with a random string. This random string
-   can be seen under `hashicorp-vault/website/website-preview/.next/static`:
+   into a directory named by a random string ID and put this directory under `hashicorp-vault-docs/_next/data`.
+
+   Next.js makes each build an immutable deployable by prefixing static resource path with a random string. This random
+   string can be seen under `hashicorp-vault/website/website-preview/.next/static`:
 
    ```bash
    $ ls static/
@@ -72,6 +73,9 @@ deployable][vault github pages deployable] in the following steps:
    ```
 
 4. Put an empty `.nojekyll` under `hashicorp-vault-docs` to prevent Jekyll interruption during the build
+
+Now the `hashicorp-vault-docs` becomes a completed [GitHub Pages deployable][vault github pages deployable] which can
+be served from `gh-pages` branch.
 
 ---
 
