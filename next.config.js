@@ -40,6 +40,7 @@ module.exports = withHashicorp({
 	nextOptimizedImages: true,
 	css: false,
 })({
+	basePath: process.env.PRODUCT_DOC_BASE_PATH,
 	transpilePackages: [
 		'@hashicorp/flight-icons',
 		/**
