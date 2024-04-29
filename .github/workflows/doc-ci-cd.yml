@@ -3,6 +3,11 @@ name: HashiCorp Product Documentation CI/CD
 
 "on":
   workflow_call:
+    inputs:
+      domain:
+        description: gh-pages domain name
+        type: string
+        required: true
 
 jobs:
   documentation-ci-cd:
@@ -50,6 +55,7 @@ jobs:
           
           cd hashicorp-product-docs/
           touch .nojekyll
+          echo "${{ inputs.domain }}" >> CNAME
       - name: Deploy to GitHub Pages
         # if: github.ref == 'refs/heads/master'
         uses: peaceiris/actions-gh-pages@v3
